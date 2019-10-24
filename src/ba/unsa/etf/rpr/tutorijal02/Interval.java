@@ -27,6 +27,9 @@ public class Interval {
     }
 
     public boolean isIn(double v) {
+        if((da_li_pripada_poc || (poc_tacka<=v)) && (da_li_pripada_krajnja || (krajnja_tacka>=v)) && !(poc_tacka>v) && !(krajnja_tacka<v))
+            return true;
+        return false;
     }
 
     public boolean isNull() {

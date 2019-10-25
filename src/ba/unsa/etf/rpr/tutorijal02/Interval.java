@@ -25,8 +25,8 @@ public class Interval {
         da_li_pripada_poc=false;
     }
 
-    public static Interval intersect(Interval i, Interval i2) {
-
+   public static Interval intersect(Interval i, Interval i2) {
+            return i.intersect(i2);
     }
 
     public boolean isIn(double v) {
@@ -42,6 +42,26 @@ public class Interval {
     }
 
     public Interval intersect(Interval interval) {
+         Interval novi=new Interval();
+         if(poc_tacka>interval.poc_tacka){
+             novi.poc_tacka=poc_tacka;
+             novi.da_li_pripada_poc=da_li_pripada_krajnja;
+         }
+         else if(poc_tacka<interval.poc_tacka)
+        {
+            novi.poc_tacka=interval.poc_tacka;
+            novi.da_li_pripada_poc=interval.da_li_pripada_poc;
+        }
+
+        if(krajnja_tacka<=interval.krajnja_tacka){
+            novi.krajnja_tacka=krajnja_tacka;
+            novi.da_li_pripada_krajnja=da_li_pripada_krajnja;
+        }
+        else if(krajnja_tacka>interval.krajnja_tacka){
+            novi.poc_tacka=interval.krajnja_tacka;
+            novi.da_li_pripada_krajnja=interval.da_li_pripada_krajnja;
+        }
+         return novi;
 
     }
 

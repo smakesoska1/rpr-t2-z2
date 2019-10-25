@@ -25,9 +25,9 @@ public class Interval {
         da_li_pripada_poc=false;
     }
 
-   /* public static Interval intersect(Interval i, Interval i2) {
+    public static Interval intersect(Interval i, Interval i2) {
 
-    }*/
+    }
 
     public boolean isIn(double v) {
         if((da_li_pripada_poc || (poc_tacka<=v)) && (da_li_pripada_krajnja || (krajnja_tacka>=v)) && !(poc_tacka>v) && !(krajnja_tacka<v))
@@ -41,9 +41,9 @@ public class Interval {
         return false;
     }
 
-   /* public Interval intersect(Interval interval) {
+    public Interval intersect(Interval interval) {
 
-    }*/
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -55,6 +55,24 @@ public class Interval {
                 da_li_pripada_poc == interval.da_li_pripada_poc &&
                 da_li_pripada_krajnja == interval.da_li_pripada_krajnja;
     }
+
+    @Override
+    public String toString() {
+            String s;
+            if(da_li_pripada_poc) s = "[";
+            else s = "(";
+            if(poc_tacka == 0 && krajnja_tacka == 0) {
+                if(da_li_pripada_krajnja) s += "]";
+                else s +=")";
+                return s;
+            }
+            s += poc_tacka + "," + krajnja_tacka;
+            if(da_li_pripada_krajnja) s += "]";
+            else s +=")";
+            return s;
+        }
+
+
 
     @Override
     public int hashCode() {

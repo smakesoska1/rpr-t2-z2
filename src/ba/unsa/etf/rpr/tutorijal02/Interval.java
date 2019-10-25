@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr.tutorijal02;
 
+import java.util.Objects;
+
 public class Interval {
     private double poc_tacka;
     private double krajnja_tacka;
@@ -23,8 +25,9 @@ public class Interval {
         da_li_pripada_poc=false;
     }
 
-    public static Interval intersect(Interval i, Interval i2) {
-    }
+   /* public static Interval intersect(Interval i, Interval i2) {
+
+    }*/
 
     public boolean isIn(double v) {
         if((da_li_pripada_poc || (poc_tacka<=v)) && (da_li_pripada_krajnja || (krajnja_tacka>=v)) && !(poc_tacka>v) && !(krajnja_tacka<v))
@@ -38,6 +41,23 @@ public class Interval {
         return false;
     }
 
-    public Interval intersect(Interval interval) {
+   /* public Interval intersect(Interval interval) {
+
+    }*/
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Interval interval = (Interval) o;
+        return Double.compare(interval.poc_tacka, poc_tacka) == 0 &&
+                Double.compare(interval.krajnja_tacka, krajnja_tacka) == 0 &&
+                da_li_pripada_poc == interval.da_li_pripada_poc &&
+                da_li_pripada_krajnja == interval.da_li_pripada_krajnja;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(poc_tacka, krajnja_tacka, da_li_pripada_poc, da_li_pripada_krajnja);
     }
 }

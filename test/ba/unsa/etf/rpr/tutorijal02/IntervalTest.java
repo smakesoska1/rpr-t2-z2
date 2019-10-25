@@ -47,7 +47,7 @@ class IntervalTest {
         assertEquals("()", i.toString());
     }
 
-    @org.junit.jupiter.api.Test
+   @org.junit.jupiter.api.Test
     void intersect() {
         Interval i = new Interval(1.1, 2.5, true, false);
         Interval i2 = i.intersect(new Interval(2.2, 2.6, true, true));
